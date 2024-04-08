@@ -1,0 +1,16 @@
+.vertical-text {
+
+    writing-mode: tb
+}
+
+.divshadow {
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+}
+
+@media screen and (max-width:678px) {
+
+    .vertical-text {
+
+        writing-mode: rl
+    }
+}
