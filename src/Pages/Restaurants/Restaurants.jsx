@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import RestaurantCard from '../../Components/RestaurantCard/RestaurantCard'
 import CardImg1 from '../../Assets/RestaurantCard/Bg1.jpg';
 import CardImg2 from '../../Assets/RestaurantCard/Bg2.jpg';
@@ -13,6 +13,7 @@ import CardImg10 from '../../Assets/RestaurantCard/Bg10.jpg';
 import CardImg11 from '../../Assets/RestaurantCard/Bg11.jpg';
 import CardImg12 from '../../Assets/RestaurantCard/Bg12.jpg';
 
+import Details from '../Details/Details';
 const Restaurants = () => {
 
     const RestaurantData = [
@@ -66,22 +67,58 @@ const Restaurants = () => {
 
     ]
 
+    //     return (
+    //         <div className="md:px-20 px-0 mt-3  " >
+    //             <h1 className='text-black font-[Poppins] font-bold md:text-2xl text-xl md:px-0 px-7'>
+    //                 Deal of the Day...
+    //             </h1>
+    //             <div className=" w-full   text-xl text  font-[Poppins] font-bold flex-wrap gap-2 flex  justify-center py-5">
+
+    //                 {RestaurantData.map((item, index) => (
+    //                     <RestaurantCard key={index} item={item} />
+    //                 ))}
+
+    //             </div>
+    //         </div>
+    //     )
+    // }
+
+
+
+    // export default Restaurants
+    const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+
+    const handleCardClick = (index) => {
+        setSelectedRestaurant(RestaurantData[index]);
+    };
+
+    const handleCloseDetails = () => {
+        setSelectedRestaurant(null);
+    };
+
     return (
-        <div className="md:px-20 px-0 mt-3  " >
-            <h1 className='text-black font-[Poppins] font-bold md:text-2xl text-xl md:px-0 px-7'>
+        <div className="md:px-20 px-0 mt-3">
+            <h1 className="text-black font-bold md:text-2xl text-xl md:px-0 px-7">
                 Deal of the Day...
             </h1>
-            <div className=" w-full   text-xl text  font-[Poppins] font-bold flex-wrap gap-2 flex  justify-center py-5">
-
-                {RestaurantData.map((item, index) => (
-                    <RestaurantCard key={index} item={item} />
-                ))}
-
-            </div>
+            {selectedRestaurant ? (
+                <Details
+                    restaurant={selectedRestaurant}
+                    onClose={handleCloseDetails}
+                />
+            ) : (
+                <div className="w-full text-xl text font-bold flex-wrap gap-2 flex justify-center py-5">
+                    {RestaurantData.map((item, index) => (
+                        <RestaurantCard
+                            key={index}
+                            item={item}
+                            onClick={() => handleCardClick(index)}
+                        />
+                    ))}
+                </div>
+            )}
         </div>
-    )
-}
+    );
+};
 
-
-
-export default Restaurants
+export default Restaurants;
