@@ -1,20 +1,25 @@
-
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
-import Home from './Pages/Home/Home';
+import RoutesConfig from './Components/AppRoutes/AppRoutes';
+import Footer from './Pages/Footer/Footer';
 
+const USER_TYPES = {
+  PUBLIC_USER: 'Public User',
+  NORMAL_USER: 'Normal User',
+  ADMIN_USER: 'Admin User'
+};
+
+const CURRENT_USER_TYPE = USER_TYPES.ADMIN_USER;
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/details/:id' element={<Home />} />
-          <Route path='*' element={<div>Page Not Found</div>} />
-        </Routes>
+        <Navbar currentUserType={CURRENT_USER_TYPE} />
+        <RoutesConfig currentUserType={CURRENT_USER_TYPE} />
+        <Footer />
       </BrowserRouter>
     </div>
   );
