@@ -67,24 +67,6 @@ const Restaurants = () => {
 
     ]
 
-    //     return (
-    //         <div className="md:px-20 px-0 mt-3  " >
-    //             <h1 className='text-black font-[Poppins] font-bold md:text-2xl text-xl md:px-0 px-7'>
-    //                 Deal of the Day...
-    //             </h1>
-    //             <div className=" w-full   text-xl text  font-[Poppins] font-bold flex-wrap gap-2 flex  justify-center py-5">
-
-    //                 {RestaurantData.map((item, index) => (
-    //                     <RestaurantCard key={index} item={item} />
-    //                 ))}
-
-    //             </div>
-    //         </div>
-    //     )
-    // }
-
-
-
     // export default Restaurants
     const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
@@ -97,9 +79,9 @@ const Restaurants = () => {
     };
 
     return (
-        <div className="md:px-20 px-0 mt-3">
-            <h1 className="text-black font-bold md:text-2xl text-xl md:px-0 px-7">
-                Deal of the Day...
+        <div className="md:px-20 px-0 mt-5">
+            <h1 className='text-black font-[Poppins] font-bold md:text-2xl text-xl md:px-0 px-7'>
+                Top Restaurants...
             </h1>
             {selectedRestaurant ? (
                 <Details
